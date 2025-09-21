@@ -1,0 +1,120 @@
+/* ===== Tailwind layers ===== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== App tokens (light theme forced) ===== */
+:root {
+  --background: #ffffff; /* page bg */
+  --foreground: #0a0a0a; /* default text */
+}
+
+/* ===== Base element styles ===== */
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== Base layer helpers ===== */
+@layer base {
+  html, body, #__next, #root { height: 100%; }
+
+  .body { @apply text-[10pt]; }
+
+  .link {
+    @apply underline underline-offset-4 decoration-dotted decoration-slate-500 transition-colors;
+  }
+  .link:hover { @apply underline; }
+}
+
+/* ===== Utilities ===== */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Micro-dot wallpaper (Nothing-OS vibe) */
+  .bg-dots {
+    /* one-shot shorthand so it overrides body background cleanly */
+    background:
+      radial-gradient(rgba(0,0,0,0.36) 1px, transparent 0.7px) 0 0 / 112px 112px,
+      var(--background);
+  }
+
+  /* Optional center vignette */
+  .bg-dots-vignette { position: relative; }
+  .bg-dots-vignette::after {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(80% 60% at 50% 40%, rgba(0,0,0,0.05), transparent 60%);
+    mix-blend-mode: multiply;
+  }
+
+  /* Geometric elements inspired by Teenage Engineering */
+  .geometric-accent {
+    position: relative;
+  }
+  
+  .geometric-accent::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0,0,0,0.1);
+    transform: rotate(45deg);
+  }
+
+  .geometric-accent::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 12px;
+    height: 12px;
+    background: rgba(0,0,0,0.05);
+    transform: rotate(45deg);
+  }
+
+  /* Grid pattern overlay */
+  .grid-overlay {
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Subtle border treatments */
+  .border-geometric {
+    border-left: 3px solid rgba(0,0,0,0.1);
+    padding-left: 12px;
+  }
+
+  /* Clean geometric shapes */
+  .shape-square {
+    width: 8px;
+    height: 8px;
+    background: rgba(0,0,0,0.1);
+    transform: rotate(45deg);
+  }
+
+  .shape-circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.08);
+  }
+
+  .shape-triangle {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 6px solid rgba(0,0,0,0.1);
+  }
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
