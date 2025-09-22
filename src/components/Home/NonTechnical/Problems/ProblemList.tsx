@@ -6,7 +6,7 @@ import Link from "@/components/Global/Link";
 const Item1 = () => (
 	<motion.li variants={animations.itemVariants} className="border-geometric">
 		<p className="text-slate-500">01</p>
-		Developed bio-inspired algorithms for event cameras that mimic how the retina filters motion, reducing spurious events by significant levels (>95%) while preserving important object motion signals.
+		Developed bio-inspired algorithms for event cameras that mimic how the retina filters motion, reducing spurious events by significant levels ({">"}95%) while preserving important object motion signals.
 	</motion.li>
 );
 
