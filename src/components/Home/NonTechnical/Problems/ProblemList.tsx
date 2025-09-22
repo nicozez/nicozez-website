@@ -20,14 +20,14 @@ const Item2 = () => (
 const Item3 = () => (
 	<motion.li variants={animations.itemVariants} className="border-geometric">
 		<p className="text-slate-500">03</p>
-		<Link text="View Writings →" href="/reading" className="text-lg font-medium"/>
+		<Link text="View Writings →" href="/reading" className="text-xl font-medium"/>
 	</motion.li>
 );
 
 const Item4 = () => (
     <motion.li variants={animations.itemVariants} className="border-geometric">
         <p className="text-slate-500">04</p>
-        <Link text="View Full Portfolio →" href="/portfolio" className="text-lg font-medium"/>
+        <Link text="View Full Portfolio →" href="/portfolio" className="text-xl font-medium"/>
     </motion.li>
 );
 

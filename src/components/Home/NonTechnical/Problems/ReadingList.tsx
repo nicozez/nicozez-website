@@ -27,7 +27,7 @@ const Item3 = () => (
 const Item4 = () => (
     <motion.li variants={animations.itemVariants}>
         <p className="text-slate-500">04</p>
-        <Link text="View Full Reading List →" href="/reading" className="text-lg font-medium"/>
+        <Link text="View Full Reading List →" href="/reading" className="text-xl font-medium"/>
     </motion.li>
 );
 

@@ -143,7 +143,6 @@ const Project = ({ project }: { project: ProjectDetails }) => {
                 <div>
                     <h3 className="text-lg mb-2">
                         {project.title}
-                        {project.link && <Link text="↗" href={project.link} className="ml-2" />}
                     </h3>
                     <p className="text-slate-600">{project.shortDescription}</p>
                 </div>
@@ -166,6 +165,19 @@ const Project = ({ project }: { project: ProjectDetails }) => {
                         {project.fullDescription && (
                             <div className="text-slate-600">
                                 {project.fullDescription}
+                            </div>
+                        )}
+
+                        {project.link && (
+                            <div className="flex items-center gap-2">
+                                <span className="text-slate-400">Codebase:</span>
+                                <Link 
+                                    text={project.title.includes("FLIGHT") ? "FLIGHT repository ↗" : 
+                                          project.title.includes("SiliconRetina") ? "GitHub repository ↗" :
+                                          project.title.includes("EE108") ? "Project details ↗" : "View ↗"} 
+                                    href={project.link} 
+                                    className="flex items-center gap-1" 
+                                />
                             </div>
                         )}
 
@@ -218,11 +230,11 @@ export default function ProjectList() {
         {
             title: "FLIGHT Project: USB Signal Extension System",
             shortDescription: "Led signalling team to extend USB capabilities beyond standard spec",
-            fullDescription: "Led signalling team to design custom USB-Ethernet conversion boards to transmit data/power to flyers, employing passive & active terminations sending full-speed USB signal beyond standard spec over 150ft. Integrated expansive circuit protections and ensured robust transmission through in-depth oscilloscope/VNA testing, fine-tuning termination strategies, and integrating custom active IC layouts in KiCad.",
+            fullDescription: "Designed custom USB-Ethernet signalling conversion boards (USBA to RJ45) to transmit data/power to flyers, employing passive & active terminations sending full-speed USB signal beyond standard spec over 150ft. Integrated expansive circuit protections and ensured robust transmission through in-depth oscilloscope/VNA testing, fine-tuning termination strategies, and integrating custom active IC layouts in KiCad.",
             image: [
                 "/projects/FLIGHT/FLIGHT_setup.png",
                 "/projects/FLIGHT/shell.png",
-                "/projects/FLIGHT/bottom.png",
+                "/projects/FLIGHT/board.png",
               ],
             link: "https://code.stanford.edu/plevis/ee185",
             tech: ["USB Protocol", "Ethernet", "PCB Design", "Signal Processing", "KiCad", "Oscilloscope", "VNA Testing"],
@@ -236,23 +248,45 @@ export default function ProjectList() {
         },
         {
             title: "Retinal-Inspired Motion Suppression for Event Cameras",
-            shortDescription: "Bio-inspired algorithms that mimic retinal filtering to reduce camera motion noise while preserving object motion",
-            fullDescription: "Developed a comprehensive signal processing pipeline for event cameras inspired by retinal computation. The project involved extensive simulation work using event camera data, implementing a spatiotemporal filtering chain in C++ and Python. The algorithm processes raw event streams through matrix mathematics to create a signal processing chain that includes spatiotemporal filtering, rectification, and pooling operations to extract local motion information. This bio-inspired approach significantly reduces unwanted events from camera egomotion while preserving important object motion signals, improving the signal-to-noise ratio for downstream computer vision applications.",
+            shortDescription: "Bio-inspired algorithms that mimic retinal sensitivity to object motion in specific Retinal Ganglion Cells to reduce camera motion noise while preserving object motion",
+            fullDescription: "Developed a very simple and comprehensive signal processing pipeline that leverages the sparsity of true object events to consisting of a convolution with a specific spatiotemporal filter, rectification of the signal at a per pixel basis and pooling to get centre and surround traces of signal that response to the central vs surround nature of the receptive fields of wide-field amacrines and OFF bipolar cells. If centre and surround traces occur within the same period of time, we suppress the signals. If there is a differential between the two signals, corresponding to local object motion being perceived, we keep the signal. This bio-inspired approach significantly reduces unwanted events from camera egomotion while preserving important object motion signals.",
             image: [
                 "/projects/retinal/poster.png",
-                "/projects/retinal/simulation_results.png",
-                "/projects/retinal/algorithm_diagram.png",
             ],
-            tech: ["C++", "Python", "Computer Vision", "Signal Processing", "Matrix Mathematics", "Event Cameras", "Retinal Computation"],
-            collaborators: ["Research Team"],
-            timeline: "2024",
+            link: "https://github.com/nicozez/SiliconRetina-",
+            tech: ["C++", "Python", "Computer Vision", "Signal Processing", "Spatiotemporal FIltering", "Event Cameras", "Retinal Computation", "Natural Motion Statistics"],
+            collaborators: ["Oleh Ivankiv", "Leo Liu"],
+            timeline: "June 2025 - August 2025",
             outcomes: [
                 "Developed complete spatiotemporal filtering pipeline for event camera data",
                 "Implemented bio-inspired motion suppression algorithms",
                 "Achieved significant noise reduction while preserving object motion signals",
                 "Created simulation framework for testing retinal-inspired processing"
             ]
-        }
+        },
+        {
+            title: "EE108 FPGA Music Player with Advanced Audio Features",
+            shortDescription: "Developed a comprehensive music player on Xilinx Virtex-II Pro XC2VP30 FPGA with chords, harmonics, and adjustable waveform display",
+            fullDescription: "Built a simple music player system on FPGA hardware featuring multi-frequency chord functionality that combines wave generator, frequency generator, and tuner outputs. Implemented harmonic generation capabilities to produce different instrument sounds including guitar and trumpet tones. Created an adjustable waveform display system with an add-on screen mount that visualizes sine waves and notes in real-time, with user-controllable waveform sizing and stretching parameters. Maintained traditional music player interface while adding advanced visualization and audio processing features.",
+            image: [
+                "/projects/EE108/FPGA.png",
+                "/projects/EE108/spec_sheet.png",
+            ],
+            tech: ["FPGA", "Verilog/VHDL", "Xilinx Virtex-II Pro XC2VP30", "Digital Signal Processing", "Audio Processing", "Wave Generation", "Harmonic Synthesis", "Real-time Display"],
+            collaborators: ["Avni Vats, Sebastian Marsoner "],
+            timeline: "Autumn 2024 Academic Term",
+            outcomes: [
+                "Successfully implemented multi-frequency chord functionality combining multiple audio sources",
+                "Developed harmonic generation system for instrument sound synthesis",
+                "Created adjustable real-time waveform visualization with user controls",
+                "Integrated traditional music player interface with advanced FPGA-based features"
+            ]
+        },
+        {
+          title: "TBD",
+          shortDescription: "More Projects Loading...",
+          fullDescription: "",
+      },
     ];
 
     return (

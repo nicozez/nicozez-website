@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { animations } from "@/assets/animations";
 import Link from "@/components/Global/Link";
 
-
 const Item4 = () => (
 	<motion.li variants={animations.itemVariants}>
 		<p className="text-slate-500">04</p>

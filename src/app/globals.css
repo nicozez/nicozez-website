@@ -23,9 +23,9 @@ body {
   .body { @apply text-[10pt]; }
 
   .link {
-    @apply underline underline-offset-4 decoration-dotted decoration-slate-500 transition-colors;
+    @apply underline underline-offset-4 decoration-dotted decoration-slate-500 transition-colors hover:decoration-slate-700 hover:text-slate-700;
   }
-  .link:hover { @apply underline; }
+  .link:hover { @apply underline decoration-solid; }
 }
 
 /* ===== Utilities ===== */
